@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="JSec">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/TS-Client/lib/JSec.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TS-WriterClient/lib/JSec.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

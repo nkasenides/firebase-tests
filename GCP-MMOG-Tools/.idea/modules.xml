@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TS-Client/TS-Client.iml" filepath="$PROJECT_DIR$/TS-Client/TS-Client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TS-ListeningClient/TS-ListeningClient.iml" filepath="$PROJECT_DIR$/TS-ListeningClient/TS-ListeningClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TS-WriterClient/TS-WriterClient.iml" filepath="$PROJECT_DIR$/TS-WriterClient/TS-WriterClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons/commons.iml" filepath="$PROJECT_DIR$/commons/commons.iml" />
     </modules>
   </component>

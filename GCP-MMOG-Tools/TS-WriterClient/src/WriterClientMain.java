@@ -4,57 +4,30 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
 import com.google.firebase.database.annotations.Nullable;
+import model.Cell;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class Main {
+public class WriterClientMain {
 
-    private static Firestore firestore;
-    private static String name;
+    public static Firestore firestore;
 
     public static void main(String[] args) {
 
         System.out.print("Constructing client...");
-        name = args[0];
         System.out.println(" [DONE]");
 
         System.out.print("Initializing Firestore...");
         initialize();
         System.out.println(" [DONE]");
 
-        DocumentReference docRef = firestore.collection("chunks").document("163e4974-22a4-42df-aedf-6ac6e5faebbe");
-        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot snapshot,
-                                @Nullable FirestoreException e) {
-                if (e != null) {
-                    System.err.println("Listen failed: " + e);
-                    return;
-                }
+        System.out.println();
 
-                if (snapshot != null && snapshot.exists()) {
-                    System.out.println("Current data: " + snapshot.getData());
-                } else {
-                    System.out.print("Current data: null");
-                }
-            }
-        });
 
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {}
-            }
-        });
-        try {
-            t.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        t.start();
-
+        WritingClient writingClient = new WritingClient("WRITING-CLIENT");
+        writingClient.run();
 
     }
 

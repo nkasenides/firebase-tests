@@ -1,7 +1,5 @@
-import com.panickapps.jsec.HashType;
-import com.panickapps.jsec.Hashing;
 import exception.InvalidChunkSizeException;
-import model.TSCell;
+import model.Cell;
 import model.Chunk;
 import model.Grid;
 
@@ -63,10 +61,10 @@ public class GridGenerator {
                 int startCol = chunkCol * Chunk.CHUNK_SIZE;
                 int lastCol = (startCol + Chunk.CHUNK_SIZE >= cols) ? startCol + colsAsChunksRemainder : startCol + Chunk.CHUNK_SIZE;
                 Chunk chunk = new Chunk(startRow, startCol, lastRow, lastCol);
-                HashMap<String, TSCell> cellsInChunk = new HashMap<>();
+                HashMap<String, Cell> cellsInChunk = new HashMap<>();
                 for (int row = startRow; row < lastRow; row++) {
                     for (int col = startCol; col < lastCol; col++) {
-                        cellsInChunk.put(hashCoordinates(row, col), new TSCell(row, col));
+                        cellsInChunk.put(Cell.hashCoordinates(row, col), new Cell(row, col));
                     }
                 }
                 chunk.setCells(cellsInChunk);
@@ -74,12 +72,6 @@ public class GridGenerator {
             }
         }
         return chunks;
-    }
-
-    private static String hashCoordinates(int row, int col) {
-        String coordinatesUnprocessed = row + "," + col;
-        String hashedCoordinates = Hashing.hash(HashType.MD5, coordinatesUnprocessed);
-        return hashedCoordinates;
     }
 
     //TODO REMOVE?

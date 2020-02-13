@@ -9,12 +9,14 @@ public class Chunk {
 
     public static final int CHUNK_SIZE = 16;
 
-    private final String id;
-    private final int startRow;
-    private final int startCol;
-    private final int lastRow;
-    private final int lastCol;
+    private String id;
+    private int startRow;
+    private int startCol;
+    private int lastRow;
+    private int lastCol;
     private HashMap<String, ? extends Cell> cells;
+
+    public Chunk() { }
 
     public Chunk(int startRow, int startCol, int lastRow, int lastCol) {
         this.id = UUID.randomUUID().toString();
@@ -43,6 +45,26 @@ public class Chunk {
 
     public int getLastCol() {
         return lastCol;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setStartRow(int startRow) {
+        this.startRow = startRow;
+    }
+
+    public void setStartCol(int startCol) {
+        this.startCol = startCol;
+    }
+
+    public void setLastRow(int lastRow) {
+        this.lastRow = lastRow;
+    }
+
+    public void setLastCol(int lastCol) {
+        this.lastCol = lastCol;
     }
 
     public HashMap<String, ? extends Cell> getCells() {
