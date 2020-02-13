@@ -21,7 +21,7 @@ public class WritingClient implements Runnable {
         Chunk chunk = null;
 
         try {
-            DocumentReference docRef = WriterClientMain.firestore.collection("chunks").document("ff3b3cdd-26a7-487e-a925-d8f6a1c7c1a1");
+            DocumentReference docRef = WriterClientMain.firestore.collection("chunks").document("7f4bdf04-9cc1-4f27-9925-d3e3559a277e");
             ApiFuture<DocumentSnapshot> future = docRef.get();
             DocumentSnapshot document = future.get();
             if (document.exists()) {
@@ -52,7 +52,7 @@ public class WritingClient implements Runnable {
             try {
                 cell.setMarked(setValue);
                 setValue = !setValue;
-                ApiFuture<WriteResult> future = WriterClientMain.firestore.collection("chunks").document("ff3b3cdd-26a7-487e-a925-d8f6a1c7c1a1").set(chunk);
+                ApiFuture<WriteResult> future = WriterClientMain.firestore.collection("chunks").document("7f4bdf04-9cc1-4f27-9925-d3e3559a277e").set(chunk);
 //                System.out.println("Server update time: " + future.get().getUpdateTime());
                 System.out.println(System.currentTimeMillis());
                 Thread.sleep(1000);

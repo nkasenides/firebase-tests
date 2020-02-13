@@ -29,11 +29,11 @@ public class ListeningClientMain {
 
     private static void initialize() {
         try {
-            FileInputStream serviceAccount = new FileInputStream("ts-service-account.json");
+            FileInputStream serviceAccount = new FileInputStream("gcp-mmog-firebase-adminsdk-rbpln-3afe671d14.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setDatabaseUrl("https://terrastates.firebaseio.com")
+                    .setDatabaseUrl("https://gcp-mmog.firebaseio.com")
                     .build();
 
             FirebaseApp.initializeApp(options);

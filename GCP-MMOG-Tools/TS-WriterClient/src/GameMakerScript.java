@@ -22,53 +22,39 @@ public class GameMakerScript {
 
     public static void main(String[] args) {
         try {
-            FileInputStream serviceAccount = new FileInputStream("ts-service-account.json");
+            FileInputStream serviceAccount = new FileInputStream("gcp-mmog-firebase-adminsdk-rbpln-3afe671d14.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setDatabaseUrl("https://terrastates.firebaseio.com")
+                    .setDatabaseUrl("https://gcp-mmog.firebaseio.com")
                     .build();
 
             FirebaseApp.initializeApp(options);
 
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
-            //Firestore firestore = FirestoreClient.getFirestore(); TODO FIRESTORE
+            Firestore firestore = FirestoreClient.getFirestore();
 
             Grid grid1 = new Grid(30, 30);
             GridGenerator.generate(grid1);
 
-//            WriteBatch batch = firestore.batch(); TODO FIRESTORE
-            database.getReference("games").child("game1").setValue(grid1, new DatabaseReference.CompletionListener() {
-                @Override
-                public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                    System.out.println(databaseError);
-                    System.out.println(databaseReference);
-                }
-            });
-//            DocumentReference game1Ref = firestore.collection("games").document("game1"); TODO FIRESTORE
-//            batch.set(game1Ref, grid1); TODO FIRESTORE
+            WriteBatch batch = firestore.batch();
+            DocumentReference game1Ref = firestore.collection("games").document("game1");
+            batch.set(game1Ref, grid1);
 
             for (Chunk c : grid1.getChunks()) {
-//                DocumentReference chunkRef = firestore.collection("chunks").document(c.getId()); TODO FIRESTORE
-                //                batch.set(chunkRef, c); TODO FIRESTORE
-                database.getReference("chunks").child(c.getId()).setValue(c, new DatabaseReference.CompletionListener() {
-                    @Override
-                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                        System.out.println(databaseError);
-                        System.out.println(databaseReference);
-                    }
-                });
+                DocumentReference chunkRef = firestore.collection("chunks").document(c.getId());
+                batch.set(chunkRef, c);
             }
 
-//            ApiFuture<List<WriteResult>> future = batch.commit(); TODO FIREBASE
+            ApiFuture<List<WriteResult>> future = batch.commit();
 
-//            for (WriteResult result : future.get()) {
-//                System.out.println("Update time : " + result.getUpdateTime());
-//            }
+            for (WriteResult result : future.get()) {
+                System.out.println("Update time : " + result.getUpdateTime());
+            }
 
 
 
-        } catch (IOException /*| InterruptedException | ExecutionException*/ e) {
+        } catch (IOException | InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
     }
