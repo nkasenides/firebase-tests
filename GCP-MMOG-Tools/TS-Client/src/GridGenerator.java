@@ -1,7 +1,7 @@
 import com.panickapps.jsec.HashType;
 import com.panickapps.jsec.Hashing;
 import exception.InvalidChunkSizeException;
-import model.Cell;
+import model.TSCell;
 import model.Chunk;
 import model.Grid;
 
@@ -63,10 +63,10 @@ public class GridGenerator {
                 int startCol = chunkCol * Chunk.CHUNK_SIZE;
                 int lastCol = (startCol + Chunk.CHUNK_SIZE >= cols) ? startCol + colsAsChunksRemainder : startCol + Chunk.CHUNK_SIZE;
                 Chunk chunk = new Chunk(startRow, startCol, lastRow, lastCol);
-                HashMap<String, Cell> cellsInChunk = new HashMap<>();
+                HashMap<String, TSCell> cellsInChunk = new HashMap<>();
                 for (int row = startRow; row < lastRow; row++) {
                     for (int col = startCol; col < lastCol; col++) {
-                        cellsInChunk.put(hashCoordinates(row, col), new Cell(row, col));
+                        cellsInChunk.put(hashCoordinates(row, col), new TSCell(row, col));
                     }
                 }
                 chunk.setCells(cellsInChunk);

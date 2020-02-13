@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="JSec">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/TS-Client/lib/JSec.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
