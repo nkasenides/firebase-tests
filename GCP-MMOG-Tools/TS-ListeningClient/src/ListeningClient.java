@@ -19,19 +19,7 @@ public class ListeningClient implements Runnable {
         docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirestoreException e) {
-                if (initialized) System.out.println(System.currentTimeMillis());
-                else initialized = true;
-
-                if (e != null) {
-                    System.err.println("Listen failed: " + e);
-                    return;
-                }
-
-                if (snapshot != null && snapshot.exists()) {
-//                    System.out.println("[" + name + "] Data: " + snapshot.getData());
-                } else {
-                    System.out.print("Current data: null");
-                }
+                System.out.println(System.currentTimeMillis());
             }
         });
 

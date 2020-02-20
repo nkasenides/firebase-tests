@@ -12,5 +12,6 @@
     <orderEntry type="library" name="org.slf4j:slf4j-api:1.7.30" level="project" />
     <orderEntry type="module" module-name="commons" />
     <orderEntry type="library" name="JSec" level="project" />
+    <orderEntry type="library" name="AsyncTask" level="project" />
   </component>
 </module>

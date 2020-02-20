@@ -14,7 +14,7 @@ public class Chunk {
     private int startCol;
     private int lastRow;
     private int lastCol;
-    private HashMap<String, ? extends Cell> cells;
+    private HashMap<String, Cell> cells;
 
     public Chunk() { }
 
@@ -71,7 +71,7 @@ public class Chunk {
         return cells;
     }
 
-    public void setCells(HashMap<String, ? extends Cell> cells) throws InvalidChunkSizeException {
+    public void setCells(HashMap<String, Cell> cells) throws InvalidChunkSizeException {
         if (cells.size() <= (CHUNK_SIZE * CHUNK_SIZE)) {
             this.cells = cells;
         }

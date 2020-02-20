@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="com.google.firebase:firebase-admin:6.12.1" level="project" />
     <orderEntry type="library" name="JSec" level="project" />
+    <orderEntry type="library" name="AsyncTask" level="project" />
   </component>
 </module>
